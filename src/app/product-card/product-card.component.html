@@ -15,7 +15,7 @@
   <span>{{ product.price | currency}}</span>
 </div>
 <div class="button">
-  <button type="button" >檢視</button>
+  <button type="button" (click)="view.emit()" >檢視</button>
   <span>
     <button type="button" class="edit">編輯</button>
     <button type="button" class="remove">刪除</button>
