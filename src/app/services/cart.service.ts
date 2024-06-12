@@ -37,9 +37,15 @@ export class CartService {
         return of(product);
     }
 
-    onAllRemove(product: Product): Observable<Product> {
+    removeSingleProduct(product: Product): Observable<Product> {
         let productIndex = this._data.findIndex(({ id }) => product.id === id);
         this._data.splice(productIndex,1);
         return of(product);
     }
+
+    removeAllProduct(): void {
+        this._data = [];
+    }
+
+
 }
