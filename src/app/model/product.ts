@@ -13,4 +13,5 @@ export class Product {
     imgUrl!: string;
     createDate!: Date;
     price!: number;
+    quantity: number = 0;
 }

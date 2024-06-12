@@ -3,6 +3,7 @@ import { ProductCardListComponent } from '../product-card-list/product-card-list
 import { Product } from '../model/product';
 import { Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-page',
@@ -13,6 +14,7 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductPageComponent {
   private productService: ProductService = inject(ProductService)
+  private cartService: CartService = inject(CartService);
   products!: Product[];
 
   ngOnInit(): void {
@@ -24,5 +26,10 @@ export class ProductPageComponent {
   @Output()
   onView(product: Product): void {
     this.router.navigate(['product', 'view', product.id]);
+  }
+
+  @Output()
+  onAdd(product: Product): void {
+    this.cartService.addCart(product);
   }
 }
