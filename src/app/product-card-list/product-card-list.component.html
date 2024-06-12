@@ -1,6 +1,8 @@
 <div class="container">
     @for (product of products;track product.id ) {
+    @if(product.isShow){
     <app-product-card [Product]="product" (view)="view.emit(product)" (add)="add.emit(product)"></app-product-card>
+    }
     }@empty {
     <div class="data-empty">
         無產品資料
