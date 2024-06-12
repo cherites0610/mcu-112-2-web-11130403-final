@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Product } from "../model/product";
+import { delay, Observable, of } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -53,25 +54,12 @@ export class ProductService {
         }),
     ];
 
-    getProducts(): Product[] {
-        return this._data;
+    getProducts(): Observable<Product[]> {
+        return of(this._data).pipe(delay(200));
     }
 
-    addProduct(product: Product): void {
-        const id = this._data.length === 0 ? 1 : Math.max( ...this._data.map(({id}) => id) ) + 1;
-        product.id = id;
-        product.name = String.fromCharCode(96+id);
-        this._data.push(product);
-    }
-
-    removeProduct(productId: number): void {
-        const index = this._data.findIndex(({ id }) => { return id == productId })
-        this._data.splice(index, 1);
-    }
-
-    getProductById(productId: number): Product {
-        console.log(productId);
-        
-        return this._data.find(({id}) => id===productId)!;
+    getProductById(productId: number): Observable<Product> {
+        const product = this._data.find(({ id }) => id === productId)!;
+        return of(product).pipe(delay(500));
     }
 }

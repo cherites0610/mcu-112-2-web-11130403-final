@@ -1,1 +1,1 @@
-<app-product-card-list [Products]="products" (view)="onView($event)" (add)="onAdd($event)"></app-product-card-list>
+<app-product-card-list [Products]="(products$|async)|| []" (view)="onView($event)" (add)="onAdd($event)"></app-product-card-list>

@@ -32,6 +32,6 @@ export class ProductDetailPageComponent {
   }
 
   ngOnInit(): void {
-    this.product = this.productSevice.getProductById(this.id);
+    this.productSevice.getProductById(this.id).subscribe((item) => this.product=item);
   }
 }
