@@ -35,3 +35,7 @@ button.remove {
 .notShow {
   color: #999;
 }
+
+.isSale{
+  color:red;
+}

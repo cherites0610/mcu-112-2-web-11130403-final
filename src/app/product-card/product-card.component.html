@@ -1,7 +1,6 @@
 <img [src]="product.imgUrl" />
 <div class="content">
-  <strong [class.notShow]="!product.isShow"> {{ product.id }}. {{ product.name }} </strong>
-  <span>{{ product.createDate | date : "yy/M/d" }}</span>
+  <strong [class.isSale]="product.isSale" [class.notShow]="!product.isShow"> {{ product.name }} </strong>
 </div>
 <div>
   作者:  
@@ -16,9 +15,8 @@
   <span>{{ product.price | currency}}</span>
 </div>
 <div class="button">
-  <button type="button" (click)="view.emit()" >檢視</button>
+  <button type="button" (click)="view.emit()" >明細</button>
   <span>
-    <button type="button" class="edit">編輯</button>
-    <button type="button" class="remove">刪除</button>
+    <button type="button" class="edit">加入購物車</button>
   </span>
 </div>
