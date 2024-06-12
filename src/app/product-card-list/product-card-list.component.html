@@ -9,3 +9,4 @@
     </div>
     }
 </div>
+<app-pagination [totalCount]="totalCount" [pageSize]="pageSize" [(pageIndex)]="pageIndex" (pageIndexChange)="pageIndexChange.emit($event)"></app-pagination>

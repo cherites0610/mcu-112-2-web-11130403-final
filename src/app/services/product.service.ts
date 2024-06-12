@@ -54,12 +54,16 @@ export class ProductService {
         }),
     ];
 
-    getProducts(): Observable<Product[]> {
-        return of(this._data).pipe(delay(200));
+    getProducts(name: string | undefined, pageIndex: number, pageSize: number): Observable<Product[]> {
+        return of(this._data);
     }
 
     getProductById(productId: number): Observable<Product> {
         const product = this._data.find(({ id }) => id === productId)!;
         return of(product).pipe(delay(500));
     }
+
+    getCount(name?: string): Observable<number> {
+        throw new Error('NO');
+      }
 }

@@ -13,6 +13,7 @@
       "isSale": false,
       "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
       "createDate": "2023-10-17T00:00:00.000+08:00",
+      "quantity": 0,
       "price": 100
     },
     {
@@ -28,6 +29,7 @@
       "isSale": true,
       "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
       "createDate": "2023-10-17T00:00:00.000+08:00",
+      "quantity": 0,
       "price": 200
     },
     {
@@ -43,6 +45,7 @@
       "isSale": false,
       "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
       "createDate": "2023-10-17T00:00:00.000+08:00",
+      "quantity": 0,
       "price": 300
     },
     {
@@ -58,7 +61,56 @@
       "isSale": true,
       "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
       "createDate": "2023-10-17T00:00:00.000+08:00",
+      "quantity": 0,
       "price": 400
+    },
+    {
+      "id": 5,
+      "name": "書籍 E",
+      "authors": [
+        "甲",
+        "乙",
+        "丙"
+      ],
+      "company": "博碩文化",
+      "isShow": true,
+      "isSale": true,
+      "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
+      "createDate": "2023-10-17T00:00:00.000+08:00",
+      "quantity": 0,
+      "price": 400
+    },
+    {
+      "name": "書籍 F",
+      "authors": [
+        "甲",
+        "乙",
+        "丙"
+      ],
+      "company": "博碩文化",
+      "isShow": true,
+      "isSale": true,
+      "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
+      "createDate": "2023-10-17T00:00:00.000+08:00",
+      "quantity": 0,
+      "price": 400,     
+      "id": 6
+    },
+    {
+      "name": "書籍 G",
+      "authors": [
+        "甲",
+        "乙",
+        "丙"
+      ],
+      "company": "博碩文化",
+      "isShow": true,
+      "isSale": true,
+      "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
+      "createDate": "2023-10-17T00:00:00.000+08:00",
+      "quantity": 0,
+      "price": 400,
+      "id": 7
     }
   ]
 }
