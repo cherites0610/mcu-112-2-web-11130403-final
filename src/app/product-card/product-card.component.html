@@ -4,8 +4,9 @@
   <span>{{ product.createDate | date : "yy/M/d" }}</span>
 </div>
 <div>
+  作者:  
   @for (author of product.authors; track author) {
-  <span>作者:  {{ author }}</span>
+  <span>{{ author }}</span>
   @if (!$last) {
   <span>、</span>
   } }
