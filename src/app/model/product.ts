@@ -2,6 +2,7 @@ export class Product {
     constructor(initData?: Partial<Product>) {
         Object.assign(this, initData);
         this.createDate = new Date();
+        this.quantity = 0;
       }
 
     id!: number;
@@ -13,5 +14,5 @@ export class Product {
     imgUrl!: string;
     createDate!: Date;
     price!: number;
-    quantity: number = 0;
+    quantity: number;
 }

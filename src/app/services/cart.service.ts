@@ -8,20 +8,7 @@ import { Observable, of } from "rxjs";
 })
 
 export class CartService {
-    private _data: Product[] = [
-        new Product({
-            id: 1,
-            name: '書籍 A',
-            authors: ['甲', '乙', '丙'],
-            company: '博碩文件',
-            isShow: true,
-            isSale: true,
-            imgUrl: 'https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img',
-            quantity: 1,
-            createDate: new Date(),
-            price: 10000,
-        })
-    ];
+    private _data: Product[] = [];
 
     getCart(): Observable<Product[]> {
         return of(this._data);
@@ -40,11 +27,6 @@ export class CartService {
         return of(product);
     }
 
-    getTotalCost(): number {
-        let result = this._data.length>0 ?this._data.map((item) => (item.price * item.quantity)).reduce((a,b)=>a+b):0;
-        return result;
-    }
-
     removeProduct(product: Product): Observable<Product> {
         let productIndex = this._data.findIndex(({ id }) => product.id === id);
         if(this._data[productIndex].quantity>1){
@@ -52,6 +34,12 @@ export class CartService {
         }else{
             this._data.splice(productIndex,1);
         }
+        return of(product);
+    }
+
+    onAllRemove(product: Product): Observable<Product> {
+        let productIndex = this._data.findIndex(({ id }) => product.id === id);
+        this._data.splice(productIndex,1);
         return of(product);
     }
 }
