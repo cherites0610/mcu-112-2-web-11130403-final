@@ -72,6 +72,19 @@ input[type="text"] {
   text-align: center;
 }
 
+.add-button {
+  background-color: white;
+  color: blue;
+  border: 1px solid blue;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.add-button:hover {
+  background-color: blue;
+  color: white;
+}
 .delete-button {
   background-color: white;
   color: red;

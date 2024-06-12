@@ -34,7 +34,6 @@
                 </tr>
             </thead>
             @for (product of cartProdcuts;track product.id ) {
-
             <tr>
                 <th>{{ product.name }}</th>
                 <th>
@@ -42,7 +41,8 @@
                 </th>
                 <th>$ {{ product.quantity * product.price }}</th>
                 <th>
-                    <button class="delete-button">刪除</button>
+                    <button class="add-button" (click)="onAdd(product)">新增</button>
+                    <button class="delete-button" (click)="onRemove(product)">刪除</button>
                 </th>
             </tr>
             }

@@ -7,7 +7,20 @@ import { ProductService } from "./product.service";
 })
 
 export class CartService {
-    private _data: Product[] = [];
+    private _data: Product[] = [
+        new Product({
+            id: 1,
+            name: '書籍 A',
+            authors: ['甲', '乙', '丙'],
+            company: '博碩文件',
+            isShow: true,
+            isSale: true,
+            imgUrl: 'https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img',
+            quantity: 1,
+            createDate: new Date(),
+            price: 10000,
+        })
+    ];
     private productService = inject(ProductService);
 
     getCart(): Product[] {
@@ -28,5 +41,14 @@ export class CartService {
 
     getTotalCost(): number {
         return this._data.map((item) => (item.price * item.quantity)).reduce((a,b)=>a+b);
+    }
+
+    removeProduct(product: Product): void {
+        let productIndex = this._data.findIndex(({ id }) => product.id === id);
+        if(this._data[productIndex].quantity>1){
+            this._data[productIndex].quantity--;
+        }else{
+            this._data.splice(productIndex,1);
+        }
     }
 }
