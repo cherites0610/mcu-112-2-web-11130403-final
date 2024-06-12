@@ -13,7 +13,7 @@ export class ProductService {
             authors: ['甲', '乙', '丙'],
             company: '博碩文件',
             isShow: true,
-            isSale: true,
+            isSale: false,
             imgUrl: 'https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img',
             createDate: new Date(),
             price: 100,

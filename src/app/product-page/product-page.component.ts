@@ -32,6 +32,7 @@ export class ProductPageComponent {
   @Output()
   onAdd(product: Product): void {
     this.cartService.addProduct(product);
+    alert('已加入購物車');
   }
 
 }

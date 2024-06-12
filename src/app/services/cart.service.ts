@@ -24,6 +24,7 @@ export class CartService {
             product.quantity++;
             this._data.push(product)
         }
+        
         return of(product);
     }
 
