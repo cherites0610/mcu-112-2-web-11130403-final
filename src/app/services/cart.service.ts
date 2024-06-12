@@ -14,15 +14,19 @@ export class CartService {
         return this._data;
     }
 
-    addCart(product: Product) {
-        let productIndex !:number
-        if ((productIndex = this._data.findIndex(({ id }) => product.id === id)) != -1){
+    addProduct(product: Product) {
+        let productIndex !: number
+        if ((productIndex = this._data.findIndex(({ id }) => product.id === id)) != -1) {
             //購物車本來就有
             this._data[productIndex].quantity++;
-        }else{
+        } else {
             //購物車本來沒有
-            product.quantity ++;
+            product.quantity++;
             this._data.push(product)
         }
+    }
+
+    getTotalCost(): number {
+        return this._data.map((item) => (item.price * item.quantity)).reduce((a,b)=>a+b);
     }
 }

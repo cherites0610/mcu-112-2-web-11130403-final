@@ -28,8 +28,10 @@ export class ProductPageComponent {
     this.router.navigate(['product', 'view', product.id]);
   }
 
+
   @Output()
   onAdd(product: Product): void {
-    this.cartService.addCart(product);
+    this.cartService.addProduct(product);
   }
+
 }

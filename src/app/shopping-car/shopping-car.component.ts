@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CartService } from '../services/cart.service';
+import { Product } from '../model/product';
 
 @Component({
   selector: 'app-shopping-car',
@@ -8,5 +10,12 @@ import { Component } from '@angular/core';
   styleUrl: './shopping-car.component.css'
 })
 export class ShoppingCarComponent {
-
+  private cartService = inject(CartService);
+  cartProdcuts!: Product[] 
+  totalCost!: number;
+  
+  ngOnInit(): void {
+    this.cartProdcuts = this.cartService.getCart();
+    this.totalCost = this.cartService.getTotalCost();
+  }
 }
