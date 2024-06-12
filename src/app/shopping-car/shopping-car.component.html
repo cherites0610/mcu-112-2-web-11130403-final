@@ -33,7 +33,7 @@
                     <th>操作</th>
                 </tr>
             </thead>
-            @for (product of cartProdcuts;track product.id ) {
+            @for (product of cartProduct$|async;track product.id ) {
             <tr>
                 <th>{{ product.name }}</th>
                 <th>

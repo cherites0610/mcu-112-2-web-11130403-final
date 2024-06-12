@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { Product } from '../model/product';
+import { delay, startWith, Subject, switchMap } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-shopping-car',
   standalone: true,
-  imports: [],
+  imports: [AsyncPipe],
   templateUrl: './shopping-car.component.html',
   styleUrl: './shopping-car.component.css'
 })
@@ -14,16 +16,21 @@ export class ShoppingCarComponent {
   cartProdcuts!: Product[]
   totalCost!: number;
 
-  ngOnInit(): void {
-    this.cartProdcuts = this.cartService.getCart();
-    this.totalCost = this.cartService.getTotalCost();
-  }
+  private readonly refresh$ = new Subject<void>();
+
+  readonly cartProduct$ = this.refresh$.pipe(
+    startWith(undefined),
+    delay(500),
+    switchMap(() => (this.cartService.getCart()))
+  )
+
 
   onAdd(product: Product): void {
-    this.cartService.addProduct(product);
+    this.cartService.addProduct(product).subscribe(() => this.refresh$.next());
+
   }
 
   onRemove(product: Product): void {
-    this.cartService.removeProduct(product);
+    this.cartService.removeProduct(product).subscribe(() => this.refresh$.next());
   }
 }

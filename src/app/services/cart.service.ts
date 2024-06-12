@@ -1,6 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { Product } from "../model/product";
 import { ProductService } from "./product.service";
+import { Observable, of } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -21,13 +22,12 @@ export class CartService {
             price: 10000,
         })
     ];
-    private productService = inject(ProductService);
 
-    getCart(): Product[] {
-        return this._data;
+    getCart(): Observable<Product[]> {
+        return of(this._data);
     }
 
-    addProduct(product: Product) {
+    addProduct(product: Product): Observable<Product> {
         let productIndex !: number
         if ((productIndex = this._data.findIndex(({ id }) => product.id === id)) != -1) {
             //購物車本來就有
@@ -37,18 +37,21 @@ export class CartService {
             product.quantity++;
             this._data.push(product)
         }
+        return of(product);
     }
 
     getTotalCost(): number {
-        return this._data.map((item) => (item.price * item.quantity)).reduce((a,b)=>a+b);
+        let result = this._data.length>0 ?this._data.map((item) => (item.price * item.quantity)).reduce((a,b)=>a+b):0;
+        return result;
     }
 
-    removeProduct(product: Product): void {
+    removeProduct(product: Product): Observable<Product> {
         let productIndex = this._data.findIndex(({ id }) => product.id === id);
         if(this._data[productIndex].quantity>1){
             this._data[productIndex].quantity--;
         }else{
             this._data.splice(productIndex,1);
         }
+        return of(product);
     }
 }
