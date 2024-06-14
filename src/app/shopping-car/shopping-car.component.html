@@ -45,18 +45,18 @@
                     <th>操作</th>
                 </tr>
             </thead>
-            @for (product of cartProduct$|async;track product.id;let i = $index ) {
+            @for (cartItem of cartProduct$|async;track cartItem.id;let i = $index ) {
             <tr>
                 <th>{{ i+1 }}</th>
-                <th>{{ product.name }}</th>
+                <th>{{ cartItem.product.name }}</th>
                 <th>
-                    {{ product.quantity }}
-                    <button class="add-button" (click)="onAdd(product)">+</button>
-                    <button class="delete-button" (click)="onRemove(product)">-</button>
+                    {{ cartItem.quantity }}
+                    <button class="add-button" (click)="onAdd(cartItem.product)">+</button>
+                    <button class="delete-button" (click)="onRemove(cartItem.product)">-</button>
                 </th>
-                <th>$ {{ product.quantity * product.price }}</th>
+                <th>$ {{ cartItem.quantity * cartItem.product.price }}</th>
                 <th>
-                    <button class="delete-button" (click)="onRemoveSingleProduct(product)">全部刪除</button>
+                    <button class="delete-button" (click)="onRemoveSingleProduct(cartItem.product)">全部刪除</button>
                 </th>
             </tr>
             }

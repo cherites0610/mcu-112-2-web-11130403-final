@@ -40,8 +40,8 @@ export class ShoppingCarComponent {
   readonly cartProduct$ = this.refresh$.pipe(
     startWith(undefined),
     switchMap(() => (this.cartService.getCart())),
-    tap((products) => {
-      this.totalCost = products.length > 0 ? products.map((item) => (item.price * item.quantity)).reduce((a, b) => a + b) : 0;
+    tap((cartItems) => {
+      this.totalCost = cartItems.length > 0 ? cartItems.map((item) => (item.product.price * item.quantity)).reduce((a, b) => a + b) : 0;
     }),
   )
 
