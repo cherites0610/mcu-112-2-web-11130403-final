@@ -36,6 +36,7 @@
         <table class="cart-table">
             <thead>
                 <tr>
+                    <th>編號</th>
                     <th>產品名稱</th>
                     <th>
                         數量
@@ -44,8 +45,9 @@
                     <th>操作</th>
                 </tr>
             </thead>
-            @for (product of cartProduct$|async;track product.id ) {
+            @for (product of cartProduct$|async;track product.id;let i = $index ) {
             <tr>
+                <th>{{ i+1 }}</th>
                 <th>{{ product.name }}</th>
                 <th>
                     {{ product.quantity }}
