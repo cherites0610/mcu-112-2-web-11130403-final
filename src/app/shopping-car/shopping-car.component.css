@@ -82,10 +82,6 @@ input[type="text"] {
   border-radius: 3px;
 }
 
-.add-button:hover {
-  background-color: blue;
-  color: white;
-}
 .delete-button {
   background-color: white;
   color: red;

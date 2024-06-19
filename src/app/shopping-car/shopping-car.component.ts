@@ -5,6 +5,7 @@ import { startWith, Subject, switchMap, tap } from 'rxjs';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ICartForm } from '../model/ICartForm';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-car',
@@ -14,7 +15,7 @@ import { ICartForm } from '../model/ICartForm';
   styleUrl: './shopping-car.component.css'
 })
 export class ShoppingCarComponent {
-  private cartService = inject(CartService);
+  cartService = inject(CartService);
   totalCost!: number;
 
   form = new FormGroup<ICartForm>({
@@ -63,13 +64,11 @@ export class ShoppingCarComponent {
     this.refresh$.next();
   }
 
+  router = inject(Router)
+
   onSendCheck(): void {
-    if (this.totalCost!=0) {
-      alert("訂單下定成功,共" + this.totalCost + "元");
-      this.cartService.removeAllProduct();
-      this.refresh$.next();
-    }else{
-      alert("購物車爲空，不能下單")
-    }
+    this.cartService.removeAllProduct();
+    this.refresh$.next();
+    this.router.navigate(["/products"]);
   }
 }

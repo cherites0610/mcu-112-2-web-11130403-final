@@ -63,5 +63,5 @@
         </table>
     </div>
 </div>
-<button class="delete-button" (click)="onRemoveAllProduct()">刪除全部商品</button>
-<button class="add-button" [disabled]="form.invalid" (click)="onSendCheck()">送出訂單 ({{ totalCost | currency }})</button>
+<button type="button" (click)="onRemoveAllProduct()">刪除商品</button>
+<button type="button" [disabled]="form.invalid || ( (cartService.getCartCount() | async) == 0 )" (click)="onSendCheck()">送出訂單 ({{ totalCost | currency }})</button>
