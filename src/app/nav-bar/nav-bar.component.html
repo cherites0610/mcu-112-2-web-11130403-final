@@ -1,2 +1,2 @@
 <a routerLink="products" routerLinkActive="active">產品清單</a>
-<a routerLink="shoppingCard" routerLinkActive="active">購物車</a>
+<a routerLink="shoppingCard" routerLinkActive="active">購物車<span class="count">{{ cartService.getCartCount() | async }}</span></a>

@@ -48,5 +48,8 @@ export class CartService {
         this._data = [];
     }
 
+    getCartCount(): Observable<number> {
+        return of(this._data.length);
+    }
 
 }
